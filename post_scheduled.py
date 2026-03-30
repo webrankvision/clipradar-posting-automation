@@ -18,6 +18,7 @@ import config
 from scheduler import is_due
 from models import ContentPackage, PlatformContent, YoutubeContent
 from publishers.zernio import ZernioPublisher
+from utils.notify import post_success, post_failed, all_posted
 
 # ── File logger (no console output — this runs silently in background) ────────
 log_file = config.LOGS_DIR / "scheduler.log"
@@ -55,6 +56,7 @@ def process_queue():
 
         job_id = job["id"]
         video_path = job["video_path"]
+        video_name = job.get("original_filename", job_id)
         schedule = job["schedule"]
         posted = job["posted"]
         content = load_content(job)
@@ -83,6 +85,7 @@ def process_queue():
                         "url": result.url,
                         "posted_at": datetime.now().isoformat(),
                     }
+                    post_success(platform, video_name, result.post_id)
                 else:
                     log.error(f"[{job_id}] {platform} failed — {result.error}")
                     job["results"][platform] = {
@@ -90,9 +93,11 @@ def process_queue():
                         "error": result.error,
                         "attempted_at": datetime.now().isoformat(),
                     }
+                    post_failed(platform, video_name, result.error)
 
             except Exception as e:
                 log.error(f"[{job_id}] {platform} exception — {e}")
+                post_failed(platform, video_name, e)
 
             anything_posted = True
 
@@ -106,6 +111,7 @@ def process_queue():
             completed_path = config.QUEUE_DIR / "completed" / queue_file.name
             queue_file.rename(completed_path)
             log.info(f"[{job_id}] All platforms posted. Moved to completed/.")
+            all_posted(video_name)
 
 
 if __name__ == "__main__":

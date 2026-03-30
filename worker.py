@@ -17,6 +17,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 import config
+from utils.notify import worker_crashed
 
 # ── Logger ────────────────────────────────────────────────────────────────────
 logging.basicConfig(
@@ -71,6 +72,7 @@ if __name__ == "__main__":
             run_cycle()
         except Exception as e:
             log.error(f"Cycle crashed: {e}")
+            worker_crashed(e)
 
         log.info(f"Sleeping {INTERVAL_SECONDS // 60} minutes...")
         time.sleep(INTERVAL_SECONDS)

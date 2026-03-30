@@ -14,6 +14,10 @@ EBOOK_LINK = os.getenv("EBOOK_LINK", "https://your-ebook-link.com")
 APP_NAME = "ClipRadar"
 BRAND_NICHE = "podcast speaker edits — motivational, business, mindset, discipline, money, success"
 
+# ── Telegram notifications ────────────────────────────────────────────────────
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
+
 # ── AI ────────────────────────────────────────────────────────────────────────
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 CLAUDE_MODEL = "claude-opus-4-6"
