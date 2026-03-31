@@ -82,11 +82,11 @@ BRIDGES_FACEBOOK = [
 # ── CTA LINES ─────────────────────────────────────────────────────────────────
 
 CTAS_TIKTOK = [
-    "Comment SYSTEM and I'll send you the free guide that explains everything.",
-    "Type SYSTEM below — I built something for people exactly like you.",
-    "Drop SYSTEM in the comments if you want the method. It's free.",
-    "SYSTEM ← comment that word. I'll DM you the playbook.",
-    "The word is SYSTEM. Comment it. I'll send you something that'll change how you think about content.",
+    "DM me SYSTEM and I'll send you the free guide that explains everything.",
+    "Send me SYSTEM in my DMs — I built something for people exactly like you.",
+    "DM me the word SYSTEM if you want the method. It's free.",
+    "SYSTEM ← send me that word in a DM. I'll send you the playbook.",
+    "Send SYSTEM to my DMs. I'll reply with something that'll change how you think about content.",
 ]
 
 CTAS_INSTAGRAM = [
@@ -97,13 +97,13 @@ CTAS_INSTAGRAM = [
     "Comment SYSTEM if you're ready. I'll send you the free playbook.",
 ]
 
-# Facebook CTAs are framed to encourage 5+ word responses (weighted 3x by FB algorithm)
+# Facebook CTAs — no automation, use direct link. Encourage 5+ word responses (weighted 3x by FB algorithm)
 CTAS_FACEBOOK = [
-    "Comment 'SYSTEM' and tell me what about this clip hit the hardest — I'll DM you the free guide.",
-    "If this resonated, drop SYSTEM below and share what you're building — I'll send you the playbook.",
-    "Type SYSTEM and one word that describes your current situation — I'm reading every single one.",
-    "Comment SYSTEM + what you're working toward right now. I'll DM you the free method.",
-    "Drop SYSTEM below if you're done just watching and ready to start building.",
+    "Get the free guide → https://build2millions.com/ — drop a comment and tell me what part of this hit you hardest.",
+    "Full breakdown is free → https://build2millions.com/ — what are you building right now? Tell me below.",
+    "Free guide at https://build2millions.com/ — comment what's been holding you back. I read every one.",
+    "Grab the free method → https://build2millions.com/ — drop a comment and tell me what clicked for you.",
+    "Get it free → https://build2millions.com/ — and tell me: are you still watching or are you building?",
 ]
 
 # ── FIRST COMMENTS ─────────────────────────────────────────────────────────────
@@ -111,10 +111,10 @@ CTAS_FACEBOOK = [
 # Different from the caption CTA — more conversational.
 
 FIRST_COMMENTS_TIKTOK = [
-    "If this hit you — type SYSTEM below. I'll send you the free guide 👇",
-    "The system behind clips like this? Comment SYSTEM and I'll DM it to you.",
-    "Want to know how to turn content like this into income? Comment SYSTEM.",
-    "SYSTEM ← that one word unlocks the free method. Drop it below.",
+    "If this hit you — DM me SYSTEM. I'll send you the free guide 👇",
+    "The system behind clips like this? Send me SYSTEM in my DMs and I'll send it over.",
+    "Want to know how to turn content like this into income? DM me SYSTEM.",
+    "SYSTEM ← send me that word in a DM. It unlocks the free method.",
 ]
 
 FIRST_COMMENTS_INSTAGRAM = [
@@ -125,10 +125,10 @@ FIRST_COMMENTS_INSTAGRAM = [
 ]
 
 FIRST_COMMENTS_FACEBOOK = [
-    "If this clip spoke to you — comment SYSTEM below and I'll send you the free guide to turn content like this into income 👇",
-    "Want to know the system behind this? Comment SYSTEM and tell me what inspired you most.",
-    "SYSTEM ← Drop this below. I'll DM you the method that changed everything for me.",
-    "Did this hit different? Comment SYSTEM and I'll send you the free playbook.",
+    "Free guide if you want the full breakdown → https://build2millions.com/ — drop a comment and tell me what this one unlocked for you 👇",
+    "The full method is free at https://build2millions.com/ — let me know in the comments what part hit hardest.",
+    "Grab it free → https://build2millions.com/ — and tell me: what are you building right now?",
+    "Full breakdown at https://build2millions.com/ — drop a comment and tell me what clicked.",
 ]
 
 # ── HASHTAG POOLS (3 sets per platform, cycle through them) ───────────────────

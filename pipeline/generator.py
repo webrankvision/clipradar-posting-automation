@@ -74,12 +74,33 @@ INSTAGRAM: [SEO-rich hook] → [Shareability trigger] → [Emotional statement] 
 YOUTUBE: [Keyword-front-loaded Title] + [Description: link first, then body, then CTA, then hashtags]
 FACEBOOK: [Thought-provoking hook — long enough to need "See More"] → [Story/Statement] → [Bridge] → [5+-word CTA with SYSTEM] → [Hashtags 3-5]
 
-CRITICAL CTA RULES:
-- "{config.EBOOK_KEYWORD}" appears in EVERY caption and EVERY first comment — no exceptions
+CTA STRATEGY PER PLATFORM (each has a different automation setup):
+
+INSTAGRAM — ManyChat comment automation is LIVE:
+- "{config.EBOOK_KEYWORD}" in EVERY Instagram caption and first comment — no exceptions
+- CTA: "Comment SYSTEM below" → ManyChat auto-DMs them the ebook link
+- Frame as an offer: "Comment SYSTEM — I'll DM you..."
+
+TIKTOK — ManyChat DM automation is set up (triggers on incoming DMs with keyword):
+- "{config.EBOOK_KEYWORD}" in EVERY TikTok caption and first comment — no exceptions
+- CTA: "DM me SYSTEM" — NOT "comment SYSTEM" (automation is DM-based, not comment-based)
+- Frame as: "DM me SYSTEM if..." or "Send me SYSTEM in my DMs..."
+
+YOUTUBE — No automation. Direct link only:
+- NO "{config.EBOOK_KEYWORD}" keyword — there is no automation to respond to it
+- CTA: "Free guide in the description 👇" — link is in the description
+- Never mention SYSTEM on YouTube
+
+FACEBOOK — No automation available:
+- NO "{config.EBOOK_KEYWORD}" keyword — there is no automation to respond to it
+- CTA: Direct link to the ebook — "Free guide: {config.EBOOK_LINK}"
+- Keep it simple and frictionless — one click to the link
+
+UNIVERSAL RULES:
 - Never say "check out my ebook" or "I have a free resource" — sounds like selling
 - Connect the CTA to the video's specific emotional leverage — it must feel EARNED
 - The CTA is an OFFER, not a request — "I'll send you..." not "please share"
-- Facebook CTAs MUST encourage 5+ word responses: "Comment SYSTEM and tell me [specific thing]..."
+- Facebook CTAs MUST encourage 5+ word responses to trigger the algorithm 3x weight
 - Never beg for engagement — make sharing feel inevitable
 
 SEO KEYWORDS TO WEAVE IN NATURALLY (don't keyword-stuff — one or two per platform):
@@ -158,35 +179,37 @@ FIRST COMMENT STYLE (generate in this voice — different phrasing from caption 
 
 TIKTOK:
 - caption: 100-180 chars. First line is the hook — front-load it. Punchy and casual.
-- cta: Must contain "SYSTEM". Connect to the specific emotional leverage of this clip.
-  Frame as an offer: "Drop SYSTEM below if [specific pain/desire from THIS video]"
+- cta: Must contain "SYSTEM". DM-based automation — use "DM me SYSTEM" or "Send me SYSTEM in my DMs".
+  NEVER say "comment SYSTEM" on TikTok — the automation triggers on incoming DMs, not comments.
+  Frame as: "DM me SYSTEM if [specific pain/desire from THIS video]"
 - hashtags: Use the TikTok set above (array without #). 3-5 max.
-- first_comment: 1-2 sentences. Conversational. Reinforces SYSTEM but different phrasing than cta.
+- first_comment: 1-2 sentences. Conversational. Reinforces the DM CTA but different phrasing.
 - full_post: caption + "\\n\\n" + cta + "\\n" + hashtags joined with spaces and # prefix
 
 INSTAGRAM:
 - caption: 150-280 chars. Open with a searchable keyword naturally woven in.
   Design for DM shares — "Send this to someone who..."
-- cta: Must contain "SYSTEM". Slightly more premium tone. "Comment SYSTEM — I'll DM you..."
+- cta: Must contain "SYSTEM". Comment-based automation. "Comment SYSTEM below — I'll DM you..."
 - hashtags: Use the Instagram set above. 3-5 max.
-- first_comment: 1-2 sentences. Warm and direct. Different phrasing from caption cta.
+- first_comment: 1-2 sentences. Warm and direct. Reinforces "comment SYSTEM" with different phrasing.
 - full_post: caption + "\\n\\n" + cta + "\\n\\n" + hashtags joined with spaces and # prefix
 
 YOUTUBE:
 - title: 50-70 chars. Primary keyword in the first 30 chars. Click-worthy and search-optimized.
 - caption: 120-200 chars. Keyword-rich. FIRST LINE MUST BE EXACTLY: "Free guide: {config.EBOOK_LINK}"
-- cta: Direct, tied to this clip's specific benefit. "Free guide in the description 👇"
+- cta: Direct, tied to this clip's specific benefit. "Free guide in the description 👇" — NO SYSTEM keyword.
 - hashtags: Use the YouTube set above. Must include Shorts.
 - first_comment: null (YouTube does not support first comment via Zernio API)
 - full_post: "Free guide: {config.EBOOK_LINK}\\n\\n" + caption + "\\n\\n" + cta + "\\n\\n" + hashtags joined with spaces and # prefix
 
 FACEBOOK:
 - caption: 200-320 chars. MUST be long enough to require "See More" click — this is a positive signal.
-  Open with a hook that creates curiosity or light controversy. Then narrative. Then bridge to the system.
-- cta: Must contain "SYSTEM". Frame to encourage 5+ word responses (Facebook weights these 3x).
-  Example structure: "Comment SYSTEM and tell me [specific question about this clip] — I'll DM you the guide."
+  Open with a hook that creates curiosity or light controversy. Then narrative. Then bridge.
+- cta: NO SYSTEM keyword. Include the direct ebook link: "{config.EBOOK_LINK}"
+  Frame to encourage 5+ word responses (Facebook weights these 3x).
+  Example: "Read the full breakdown → {config.EBOOK_LINK} — drop a comment telling me [specific question about this clip]"
 - hashtags: Use the Facebook set above. 3-5 max.
-- first_comment: 1-2 sentences. Personal and warm. Different phrasing from caption cta.
+- first_comment: 1-2 sentences. Personal, warm. Includes the ebook link directly — no keyword trigger.
 - full_post: caption + "\\n\\n" + cta + "\\n\\n" + hashtags joined with spaces and # prefix
 
 Return ONLY a valid JSON object. No markdown. No explanation. Just the JSON:
