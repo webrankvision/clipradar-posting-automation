@@ -9,9 +9,9 @@ Base URL: https://zernio.com/api/v1
 Auth: Bearer sk_... token
 
 Flow:
-  1. POST /v1/media/presigned-url → get uploadUrl + publicUrl
+  1. POST /v1/media/presign → get uploadUrl + publicUrl
   2. PUT video file directly to cloud storage via uploadUrl
-  3. POST /v1/posts with publicUrl, platform options, and firstComment
+  3. POST /v1/posts with mediaItems[{type,url}], platform options, and firstComment
 """
 
 import sys
@@ -59,12 +59,12 @@ class ZernioPublisher(BasePublisher):
 
         # Step 1: Request presigned upload URL
         resp = requests.post(
-            f"{self.BASE_URL}/media/presigned-url",
+            f"{self.BASE_URL}/media/presign",
             headers=self._headers(),
             json={
-                "fileName": video_file.name,
+                "filename": video_file.name,
                 "fileSize": file_size,
-                "fileType": mime_type,
+                "contentType": mime_type,
             },
             timeout=30,
         )
@@ -125,8 +125,8 @@ class ZernioPublisher(BasePublisher):
 
             body: dict = {
                 "publishNow": True,
-                "caption": self._get_caption(content),
-                "mediaUrls": [public_url],
+                "content": self._get_caption(content),
+                "mediaItems": [{"type": "video", "url": public_url}],
                 "platforms": [
                     {"platform": self.platform_name, "accountId": self.account_id}
                 ],
