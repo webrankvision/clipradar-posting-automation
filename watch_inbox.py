@@ -19,6 +19,7 @@ All output goes to logs/watcher.log
 import io
 import json
 import logging
+import os
 import shutil
 import sys
 import tempfile
@@ -158,11 +159,31 @@ def get_enabled_platforms() -> list[str]:
     return platforms
 
 
+def is_already_queued(file_id: str) -> bool:
+    """Return True if this Drive file ID already exists in any queue or completed file."""
+    for queue_file in list(config.QUEUE_DIR.glob("pending_*.json")) + \
+                      list((config.QUEUE_DIR / "completed").glob("*.json")):
+        try:
+            with open(queue_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            if data.get("drive_file_id") == file_id:
+                return True
+        except Exception:
+            pass
+    return False
+
+
 def process_video(service, drive_file: dict, inbox_folder_id: str, processed_folder_id: str):
-    """Full pipeline for one video: download → analyze → generate → schedule → queue."""
+    """Full pipeline for one video: download → analyze → generate → schedule → queue → move."""
     file_id = drive_file["id"]
     filename = drive_file["name"]
     log.info(f"Processing: {filename}")
+
+    # Skip if already picked up by a previous run (prevents double-processing on retry)
+    if is_already_queued(file_id):
+        log.info(f"Already queued — moving {filename} to processed/ in Drive.")
+        move_to_processed(service, file_id, inbox_folder_id, processed_folder_id)
+        return
 
     local_path = None
     try:
@@ -170,12 +191,6 @@ def process_video(service, drive_file: dict, inbox_folder_id: str, processed_fol
         log.info(f"Downloading {filename} from Google Drive...")
         local_path = download_video(service, file_id, filename)
         log.info(f"Downloaded to {local_path}")
-
-        # ── Move Drive file to processed/ immediately (claim it) ──────────────
-        # Do this before heavy processing so a second watcher run doesn't
-        # pick up the same file.
-        move_to_processed(service, file_id, inbox_folder_id, processed_folder_id)
-        log.info(f"Moved {filename} to processed/ in Drive.")
 
         # ── Transcribe + analyze ──────────────────────────────────────────────
         log.info("Transcribing and analyzing...")
@@ -218,8 +233,16 @@ def process_video(service, drive_file: dict, inbox_folder_id: str, processed_fol
 
         log.info(f"Queued as {queue_file.name}")
 
+        # ── Move Drive file to processed/ only after queue is safely saved ────
+        # This is intentionally AFTER saving the queue file so a crash mid-
+        # pipeline leaves the video in inbox for retry on the next cycle.
+        move_to_processed(service, file_id, inbox_folder_id, processed_folder_id)
+        log.info(f"Moved {filename} to processed/ in Drive.")
+
     except Exception as e:
-        log.error(f"Failed to process {filename}: {e}")
+        log.error(f"Failed to process {filename}: {e} — file left in Drive inbox for retry.")
+        from utils.notify import pipeline_failed
+        pipeline_failed(filename, e)
 
     finally:
         # Clean up the temp processing file
@@ -235,8 +258,10 @@ def main():
         log.error("GOOGLE_DRIVE_FOLDER_ID not set in .env")
         return
 
-    if not config.GOOGLE_SERVICE_ACCOUNT_FILE or not Path(config.GOOGLE_SERVICE_ACCOUNT_FILE).exists():
-        log.error(f"Service account file not found: {config.GOOGLE_SERVICE_ACCOUNT_FILE}")
+    has_json_env = bool(os.environ.get("GOOGLE_SERVICE_ACCOUNT_JSON", ""))
+    has_json_file = bool(config.GOOGLE_SERVICE_ACCOUNT_FILE) and Path(config.GOOGLE_SERVICE_ACCOUNT_FILE).exists()
+    if not has_json_env and not has_json_file:
+        log.error("No Google service account credentials found (set GOOGLE_SERVICE_ACCOUNT_JSON or GOOGLE_SERVICE_ACCOUNT_FILE).")
         return
 
     if not config.ANTHROPIC_API_KEY:
