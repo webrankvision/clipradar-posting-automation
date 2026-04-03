@@ -200,7 +200,7 @@ YOUTUBE:
 - cta: Direct, tied to this clip's specific benefit. "Free guide in the description 👇" — NO SYSTEM keyword.
 - hashtags: Use the YouTube set above. Must include Shorts.
 - first_comment: null (YouTube does not support first comment via Zernio API)
-- full_post: "Free guide: {config.EBOOK_LINK}\\n\\n" + caption + "\\n\\n" + cta + "\\n\\n" + hashtags joined with spaces and # prefix
+- full_post: "Free guide: {config.EBOOK_LINK}\\nThis clip was found in 30 seconds using ClipRadar → free 3-day trial: clipradar.app\\n\\n" + caption + "\\n\\n" + cta + "\\n\\n" + hashtags joined with spaces and # prefix
 
 FACEBOOK:
 - caption: 200-320 chars. MUST be long enough to require "See More" click — this is a positive signal.

@@ -111,24 +111,24 @@ CTAS_FACEBOOK = [
 # Different from the caption CTA — more conversational.
 
 FIRST_COMMENTS_TIKTOK = [
-    "If this hit you — DM me SYSTEM. I'll send you the free guide 👇",
-    "The system behind clips like this? Send me SYSTEM in my DMs and I'll send it over.",
-    "Want to know how to turn content like this into income? DM me SYSTEM.",
-    "SYSTEM ← send me that word in a DM. It unlocks the free method.",
+    "Found this clip in 30 seconds. Not an accident. DM me SYSTEM and I'll show you how.",
+    "This clip? The app surfaced it in under a minute. Send me SYSTEM in my DMs — I'll send you the method.",
+    "I didn't spend an hour finding this. DM me SYSTEM and I'll tell you exactly what I use.",
+    "Nobody stumbles onto clips this good. DM me SYSTEM — I'll send you what found this one.",
 ]
 
 FIRST_COMMENTS_INSTAGRAM = [
-    "Drop SYSTEM below if you want the free guide sent straight to your DMs 👇",
-    "I built something for people who are serious about this. Comment SYSTEM.",
-    "Want the method? Just comment SYSTEM. I'll DM you everything.",
-    "If this resonated — drop SYSTEM. I'll send you the full system for free.",
+    "Found this clip in 30 seconds. Not scrolling. Not luck. Comment SYSTEM and I'll show you exactly how.",
+    "This clip existed before I finished my coffee. Comment SYSTEM — I'll DM you the method.",
+    "I didn't hunt for this. The app found it. Comment SYSTEM if you want to know what I use.",
+    "Nobody finds clips this good by accident. Comment SYSTEM and I'll send you what I use to find them.",
 ]
 
 FIRST_COMMENTS_FACEBOOK = [
-    "Free guide if you want the full breakdown → https://build2millions.com/ — drop a comment and tell me what this one unlocked for you 👇",
-    "The full method is free at https://build2millions.com/ — let me know in the comments what part hit hardest.",
-    "Grab it free → https://build2millions.com/ — and tell me: what are you building right now?",
-    "Full breakdown at https://build2millions.com/ — drop a comment and tell me what clicked.",
+    "Found this clip in 30 seconds. That's ClipRadar — free 3-day trial: clipradar.app\n\nFree system → https://build2millions.com/ — drop a comment and tell me what this one unlocked 👇",
+    "This clip took under a minute to find. That's what ClipRadar does — free trial: clipradar.app\n\nFull method free → https://build2millions.com/ — tell me in the comments what hit hardest.",
+    "I didn't hunt for this episode. ClipRadar surfaced it in 30 seconds — free trial: clipradar.app\n\nFull breakdown free → https://build2millions.com/ — what are you building right now? Tell me below.",
+    "Real talk: this clip took 30 seconds to find. That's ClipRadar — free trial: clipradar.app\n\nFree method → https://build2millions.com/ — drop a comment and tell me what clicked.",
 ]
 
 # ── HASHTAG POOLS (3 sets per platform, cycle through them) ───────────────────
